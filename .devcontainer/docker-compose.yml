@@ -10,13 +10,10 @@ services:
       MYSQL_USER: docker
       MYSQL_PASSWORD: docker
       TZ: 'Asia/Tokyo'
-    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
-      - $PWD/docker/mysql/data:/var/lib/mysql
-      # 設定ファイルを置き換える場合の例
-      #- $PWD/docker/mysql/conf/my.cnf:/etc/mysql/conf.d/my.cnf
-      # 起動時にSQLを実行する場合の例
-      #- $PWD/docker/mysql/sql:/docker-entrypoint-initdb.d
+      - $PWD/.devcontainer/mysql/data:/var/lib/mysql
+      - $PWD/.devcontainer/mysql/conf/:/etc/mysql/conf.d
+      - $PWD/.devcontainer/mysql/sql:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
     networks: 
@@ -26,7 +23,7 @@ services:
     build: ./node
     tty: true
     volumes:
-      - ../:/root/workspace
+      - $PWD:/root/workspace
     ports:
       - 3000:3000
     depends_on:

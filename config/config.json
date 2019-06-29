@@ -1,0 +1,26 @@
+{
+  "development": {
+    "username": "root",
+    "password": "root",
+    "database": "node_db",
+    "host": "mysql",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "test": {
+    "username": "root",
+    "password": "root",
+    "database": "node_db_test",
+    "host": "mysql",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  },
+  "production": {
+    "username": "root",
+    "password": "root",
+    "database": "node_db_production",
+    "host": "mysql",
+    "dialect": "mysql",
+    "operatorsAliases": false
+  }
+}
