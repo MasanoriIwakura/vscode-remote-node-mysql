@@ -1,0 +1,13 @@
+{
+  "name": "Node.js and MySQL Development",
+  "dockerComposeFile": "docker-compose.yml",
+  "dockerFile": "./node/Dockerfile",
+  "appPort": 3000,
+  "extensions": [
+    "dbaeumer.vscode-eslint"
+  ],
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "postCreateCommand": "yarn install"
+}

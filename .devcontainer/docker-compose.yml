@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  mysql:
+    container_name: vscode-mysql
+    build: ./mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: node_db
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - $PWD/mysql/data:var/lib/mysql
+      # 設定ファイルを置き換える場合の例
+      #- $PWD/mysql/conf/my.cnf:/etc/mysql/conf.d/my.cnf
+      # 起動時にSQLを実行する場合の例
+      - $PWD/msql/sql:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    networks: 
+      - backend
+  node:
+    container_name: vscode-node
+    build: ./node
+    ports:
+      - 3000:3000
+    depends_on:
+      - mysql
+    links:
+      - mysql:mysql
+    networks: 
+      - backend
+
+networks:
+  backend:
+
