@@ -1,5 +1,5 @@
 CREATE TABLE `users` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) DEFAULT NULL PRIMARY KEY,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime NOT NULL
